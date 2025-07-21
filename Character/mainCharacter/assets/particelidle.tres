@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://btvudohig3jsc"]
+
+[ext_resource type="Texture2D" uid="uid://ghiq30pwh51i" path="res://Character/mainCharacter/assets/maviadam-Sheet.png" id="1_kbwt1"]
+
+[resource]
+atlas = ExtResource("1_kbwt1")
+region = Rect2(5, 0, 6.27802, 16)

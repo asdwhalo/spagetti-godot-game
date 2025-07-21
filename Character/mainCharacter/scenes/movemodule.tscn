@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk0wlapbsfsxv"]
+
+[ext_resource type="Script" uid="uid://cgmq5trmt63l2" path="res://Character/mainCharacter/scripts/movemodule.gd" id="1_m46p7"]
+
+[node name="movemodule" type="Node"]
+script = ExtResource("1_m46p7")
+jump = 3000.0
+speed = 5333.33
+gravitiy = 30.0
+
+[node name="dashtimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="dashcooldown" type="Timer" parent="."]

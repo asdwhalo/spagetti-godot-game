@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cgqqrmcjhl67k"]
+
+[ext_resource type="FontFile" uid="uid://b433y4235eniu" path="res://misc/fonts/AdwaitaMono-Regular.ttf" id="1_i0mmm"]
+
+[resource]
+default_base_scale = 0.15
+default_font = ExtResource("1_i0mmm")
+/colors/base = Color(0.375597, 0.597983, 0.481354, 1)
+/fonts/font = ExtResource("1_i0mmm")

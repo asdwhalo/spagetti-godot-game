@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr2yspvxwbuj1"]
+
+[ext_resource type="Script" uid="uid://dcojug4ml53xs" path="res://Character/universal/scripts/dialouge_area.gd" id="1_xv4ie"]
+
+[node name="dial_area" type="Area2D"]
+script = ExtResource("1_xv4ie")
+metadata/_custom_type_script = "uid://dcojug4ml53xs"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

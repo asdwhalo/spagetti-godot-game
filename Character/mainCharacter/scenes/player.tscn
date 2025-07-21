@@ -1,0 +1,84 @@
+[gd_scene load_steps=10 format=3 uid="uid://dlk0jew6p7s5g"]
+
+[ext_resource type="Script" uid="uid://bd5chtqpigk8m" path="res://Character/mainCharacter/scripts/PlayerClass.gd" id="1_u48tv"]
+[ext_resource type="PackedScene" uid="uid://bk0wlapbsfsxv" path="res://Character/mainCharacter/scenes/movemodule.tscn" id="2_32dps"]
+[ext_resource type="Texture2D" uid="uid://ghiq30pwh51i" path="res://Character/mainCharacter/assets/maviadam-Sheet.png" id="2_o1c56"]
+[ext_resource type="PackedScene" uid="uid://i1cv5kdaa8a5" path="res://Character/universal/scenes/Hurtbox.tscn" id="3_32dps"]
+[ext_resource type="PackedScene" uid="uid://bsvh734nn6lku" path="res://huds/scenes/dialougebox.tscn" id="3_40f8a"]
+[ext_resource type="SpriteFrames" uid="uid://0h45pdp1ig0p" path="res://Character/mainCharacter/assets/maviadamnormal.tres" id="3_goo8w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpsop"]
+atlas = ExtResource("2_o1c56")
+region = Rect2(34.293, 0, 11.5866, 16)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_40f8a"]
+radius = 2.0
+height = 14.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1c56"]
+size = Vector2(4, 15)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movemodule", "hurtbox", "fizikbox")]
+script = ExtResource("1_u48tv")
+movemodule = NodePath("movemodule")
+hurtbox = NodePath("Hurtbox")
+fizikbox = NodePath("fizikbox")
+metadata/_custom_type_script = "uid://bd5chtqpigk8m"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 10
+texture = SubResource("AtlasTexture_qpsop")
+lifetime = 0.24
+one_shot = true
+explosiveness = 0.05
+randomness = 0.13
+gravity = Vector2(0, 0)
+color = Color(0.631373, 0.901961, 0.85098, 0.564706)
+
+[node name="movemodule" parent="." instance=ExtResource("2_32dps")]
+jump = 10.0
+speed = 70.0
+jump_time_to_peak = 0.5
+jump_destence = 30.0
+
+[node name="Camera" type="Camera2D" parent="."]
+scale = Vector2(0.886402, 0.225)
+zoom = Vector2(4, 4)
+rotation_smoothing_enabled = true
+
+[node name="hud" type="CanvasLayer" parent="Camera"]
+
+[node name="dialougebox" parent="Camera/hud" instance=ExtResource("3_40f8a")]
+unique_name_in_owner = true
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("3_goo8w")
+animation = &"idle"
+
+[node name="fizikbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_40f8a")
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_32dps")]
+
+[node name="Collisionbox" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_o1c56")
+debug_color = Color(0.951568, 0.194754, 0.273678, 0.42)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(7, -4)
+rotation = -1.59811
+target_position = Vector2(0, 4)
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-7, -4)
+rotation = 1.56598
+target_position = Vector2(0, 4)
+hit_from_inside = true
+
+[connection signal="dialouge_ended" from="Camera/hud/dialougebox" to="." method="_on_dialougebox_dialouge_ended"]

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="dialouge" load_steps=2 format=3 uid="uid://dtvclgpa30jvb"]
+
+[ext_resource type="Script" uid="uid://b357qo717ahqf" path="res://huds/scripts/dialougeres.gd" id="1_u1xdo"]
+
+[resource]
+script = ExtResource("1_u1xdo")
+dial_text = "kod çalıştı oye"
+metadata/_custom_type_script = "uid://b357qo717ahqf"

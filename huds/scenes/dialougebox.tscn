@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsvh734nn6lku"]
+
+[ext_resource type="Theme" uid="uid://cgqqrmcjhl67k" path="res://misc/fonts/basic.tres" id="1_k61s4"]
+[ext_resource type="Script" uid="uid://l3wkwvgjl7cq" path="res://huds/scripts/dialouge.gd" id="2_xmox3"]
+[ext_resource type="Script" uid="uid://b357qo717ahqf" path="res://huds/scripts/dialougeres.gd" id="3_ajdpl"]
+[ext_resource type="Resource" uid="uid://dtvclgpa30jvb" path="res://huds/1nolu.tres" id="4_uemhf"]
+
+[node name="dialougebox" type="Panel"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -120.5
+offset_top = -102.0
+offset_right = 120.5
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_k61s4")
+script = ExtResource("2_xmox3")
+dialouges = Array[ExtResource("3_ajdpl")]([ExtResource("4_uemhf")])
+metadata/_custom_type_script = "uid://l3wkwvgjl7cq"
+
+[node name="dialouge" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
