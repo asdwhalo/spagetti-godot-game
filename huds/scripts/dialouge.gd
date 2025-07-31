@@ -10,7 +10,7 @@ signal dialouge_ended
 @onready var label: Label = $dialouge
 @export var dialouges : Array[dialouge] 
 
-#TODO  diyalog sistemi yap!!!!!
+# TODO  diyalog sistemini daha iyi yap!!!!!
 
 func dialuoge_system(event:InputEvent)->void:
 	for t in dialouges:

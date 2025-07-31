@@ -11,8 +11,7 @@ var par2:AtlasTexture = preload("res://Character/mainCharacter/assets/particelid
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var movemodule: Node = $movemodule
 
-
-signal dead
+signal killed
 
 func change_liv_state(state:Ystates):
 	PlayerYstates  = state
