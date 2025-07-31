@@ -18,14 +18,14 @@ height = 14.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1c56"]
 size = Vector2(4, 15)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movemodule", "hurtbox", "fizikbox")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("hurtbox", "fizikbox")]
 script = ExtResource("1_u48tv")
-movemodule = NodePath("movemodule")
 hurtbox = NodePath("Hurtbox")
 fizikbox = NodePath("fizikbox")
 metadata/_custom_type_script = "uid://bd5chtqpigk8m"
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+visible = false
 emitting = false
 amount = 10
 texture = SubResource("AtlasTexture_qpsop")
@@ -73,6 +73,7 @@ unique_name_in_owner = true
 position = Vector2(7, -4)
 rotation = -1.59811
 target_position = Vector2(0, 4)
+collide_with_areas = true
 
 [node name="RayCast2D2" type="RayCast2D" parent="."]
 unique_name_in_owner = true
@@ -80,5 +81,12 @@ position = Vector2(-7, -4)
 rotation = 1.56598
 target_position = Vector2(0, 4)
 hit_from_inside = true
+collide_with_areas = true
+
+[node name="Marker" type="Marker2D" parent="."]
+position = Vector2(2, -2)
+
+[node name="Marker2" type="Marker2D" parent="."]
+position = Vector2(-2, -2)
 
 [connection signal="dialouge_ended" from="Camera/hud/dialougebox" to="." method="_on_dialougebox_dialouge_ended"]

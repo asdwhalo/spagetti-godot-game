@@ -8,8 +8,9 @@ extends Node
 @onready var ray2: RayCast2D = %RayCast2D2
 
 
-
-
+var parent = Player
+func _ready() -> void:
+	pass
 @onready var jump_heigth = calculater(jump,jump_time_to_peak)
 @onready var up_grav = gravity_calculater(jump,jump_time_to_peak)
 @onready var dis_speed = cal_jump_dis(100,jump_time_to_peak,jump_destence)
@@ -24,17 +25,17 @@ func _physics_process(delta: float) -> void:
 	if Player.PlayerHstates == Player.Mstates.DASH:
 		var dashspeed = speed*2
 		Player.velocity.abs().x = dashspeed
-	var collr = rayr.get_collider()
-	var colll = ray2.get_collider()
+	
+	var cols = ray2.get_collider() and rayr.get_collider()
 	var colled:bool = rayr.is_colliding() and ray2.is_colliding()
 	var dirx = Input.get_axis("a","d")
 	Player.velocity.x = dirx * speed 
 	if Input.is_action_just_pressed("space")and Player.is_on_floor():
 		Player.velocity.y += jump_heigth 
-		Player.velocity.x = sign(dirx/1.5) *dis_speed
-	if Input.is_action_just_pressed("space")and colled and (colll is StaticBody2D or collr is StaticBody2D):
+		Player.velocity.x = dirx/1.5 *dis_speed
+	if Input.is_action_just_pressed("space")and Player.is_on_wall():
 		Player.velocity.y += jump_heigth / 2
-		Player.velocity.x = sign(dirx) *dis_speed / -2
+		Player.velocity.x = sign(dirx) * dis_speed / -2
 		print("coll")
 	if not Player.is_on_floor():
 		Player.velocity.y += gravitiy *delta

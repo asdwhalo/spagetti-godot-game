@@ -9,6 +9,8 @@ var par2:AtlasTexture = preload("res://Character/mainCharacter/assets/particelid
 
 @onready var dial: Dialouge_manager = %dialougebox
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@onready var movemodule: Node = $movemodule
+
 
 signal dead
 
@@ -35,16 +37,10 @@ func Mstatemanager()->void:
 func dialouge_control()->void:
 	if PlayerHstates == Mstates.DIALOG:
 		can_move = false
-func take_damage(value:float)->void:
-	curr_health - value
-	if curr_health >= 0:
-		PlayerYstates = Ystates.HAYATTA
-	else:
-		PlayerYstates = Ystates.OLU
-		dead.emit()
-		can_move = false
+
 func _ready() -> void:
 	curr_health = max_health
+	#movemodule.velocity = self.velocity
 func anim_control()->void:
 	if can_move and  velocity.abs().x >= 0 :
 		particles.emitting = true
