@@ -1,4 +1,5 @@
 class_name player extends entity
+
 #TODO movementi düzelt hiç sulu değil!
 
 var par2:AtlasTexture = preload("res://Character/mainCharacter/assets/particelidle.tres")
@@ -31,7 +32,7 @@ enum Ystates{
 func Mstatemanager()->void:
 	if is_on_floor():
 		change_mov_state(Mstates.YER)
-	else:
+	elif not is_on_floor():
 		change_mov_state(Mstates.HAVA)
 func dialouge_control()->void:
 	if PlayerHstates == Mstates.DIALOG:

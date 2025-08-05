@@ -18,9 +18,9 @@ height = 14.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1c56"]
 size = Vector2(4, 15)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("hurtbox", "fizikbox")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("hurtbox_component", "fizikbox")]
 script = ExtResource("1_u48tv")
-hurtbox = NodePath("Hurtbox")
+hurtbox_component = NodePath("Hurtbox")
 fizikbox = NodePath("fizikbox")
 metadata/_custom_type_script = "uid://bd5chtqpigk8m"
 
@@ -37,6 +37,10 @@ gravity = Vector2(0, 0)
 color = Color(0.631373, 0.901961, 0.85098, 0.564706)
 
 [node name="movemodule" parent="." instance=ExtResource("2_32dps")]
+is_basic = true
+basic_speed = 100
+basic_jump = 345
+basic_gravity = 20.0
 jump = 10.0
 speed = 70.0
 jump_time_to_peak = 0.5
@@ -54,6 +58,7 @@ unique_name_in_owner = true
 visible = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 sprite_frames = ExtResource("3_goo8w")
 animation = &"idle"
 

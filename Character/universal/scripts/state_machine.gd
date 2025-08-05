@@ -1,2 +1,2 @@
-class_name state
+class_name StateMachine
 extends Node
