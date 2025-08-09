@@ -73,3 +73,4 @@ func _physics_process(_delta: float) -> void:
 
 func _on_dialougebox_dialouge_ended() -> void:
 	can_move = true
+	dial.visible = false

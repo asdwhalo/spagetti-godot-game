@@ -11,7 +11,9 @@ signal dialouge_ended
 @export var dialouges : Array[dialouge] 
 
 # TODO  diyalog sistemini daha iyi yap!!!!!
-
+func _init() -> void:
+	#connect("dialouge_ended",pr._on_dialougebox_dialouge_ended)
+	pass
 func dialuoge_system(event:InputEvent)->void:
 	for t in dialouges:
 		var dials:int = 0

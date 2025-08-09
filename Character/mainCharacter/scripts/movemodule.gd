@@ -27,9 +27,13 @@ func _ready() -> void:
 @export var jump_time_to_peak := 0.4
 @export var jump_destence :float = 0.25 
 
+@export_group("Extras")
+@export var is_expremental:bool = false
 func _physics_process(delta: float) -> void:
-	if  is_basic:
+	if  is_basic == true:
 		basic_movement()
+	elif is_expremental == true:
+		extra_movement()
 	else:
 		anim.self_modulate = Color.CRIMSON
 		if Player.PlayerHstates == Player.Mstates.DASH:
@@ -62,6 +66,7 @@ func dash():
 func cal_jump_dis(distance:float,to_peak:float,to_desenc:float)->float:
 	return distance / (to_desenc+to_peak)
 func basic_movement()->void:
+	
 	var dir := Input.get_axis("a","d")
 	Player.velocity.x = dir * basic_speed
 	if Input.is_action_just_pressed("space") and Player.PlayerHstates == Player.Mstates.YER:
@@ -72,3 +77,23 @@ func basic_movement()->void:
 			Player.velocity.y += basic_gravity
 		else:
 			basic_gravity = 40.0
+func extra_movement()->void:
+	var xdir:Vector2 = Vector2.ZERO
+	
+	if Input.is_action_just_pressed("space") and Player.PlayerHstates == Player.Mstates.YER:
+		xdir.y = -2
+		Player.velocity.y = xdir.y
+	if  not Player.PlayerHstates == Player.Mstates.YER:
+		xdir.y = 1
+		var max_basic_gravity = 2 * basic_gravity
+		if not basic_gravity > max_basic_gravity:
+			Player.velocity.y += basic_gravity
+		else:
+			basic_gravity = 40.0
+	else:
+		xdir.y = 0
+	if Input.is_action_pressed("a") and Player.PlayerHstates == Player.Mstates.YER:
+		xdir = Vector2(-1,0)
+	if Input.is_action_pressed("d") and Player.PlayerHstates == Player.Mstates.YER:
+		xdir = Vector2(1,0)
+	Player.velocity.x = xdir.x * basic_speed

@@ -5,5 +5,4 @@
 [resource]
 script = ExtResource("1_u1xdo")
 dial_text = "kod çalıştı oye"
-dials = Array[String]([])
 metadata/_custom_type_script = "uid://b357qo717ahqf"

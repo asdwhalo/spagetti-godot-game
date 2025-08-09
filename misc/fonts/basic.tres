@@ -8,3 +8,4 @@ default_base_scale = 0.15
 default_font = ExtResource("1_i0mmm")
 /colors/base = Color(0.375597, 0.597983, 0.481354, 1)
 Label/fonts/font = ExtResource("1_v0dml")
+ProgressBar/fonts/font = ExtResource("1_v0dml")
