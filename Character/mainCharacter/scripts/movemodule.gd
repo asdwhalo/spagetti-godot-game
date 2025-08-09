@@ -89,7 +89,7 @@ func extra_movement()->void:
 		if not basic_gravity > max_basic_gravity:
 			Player.velocity.y += basic_gravity
 		else:
-			basic_gravity = 40.0
+			basic_gravity = 20.0
 	else:
 		xdir.y = 0
 	if Input.is_action_pressed("a") and Player.PlayerHstates == Player.Mstates.YER:

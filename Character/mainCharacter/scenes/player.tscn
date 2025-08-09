@@ -37,6 +37,7 @@ gravity = Vector2(0, 0)
 color = Color(0.631373, 0.901961, 0.85098, 0.564706)
 
 [node name="movemodule" parent="." instance=ExtResource("2_32dps")]
+is_basic = true
 basic_speed = 100
 basic_jump = 345
 basic_gravity = 20.0
@@ -44,7 +45,6 @@ jump = 10.0
 speed = 70.0
 jump_time_to_peak = 0.5
 jump_destence = 30.0
-is_expremental = true
 
 [node name="Camera" type="Camera2D" parent="."]
 scale = Vector2(0.886402, 0.225)

@@ -7,12 +7,12 @@ class dial extends Control :
 signal skip
 signal dialouge_ended
 
-@onready var label: Label = $dialouge
-@export var dialouges : Array[dialouge] 
+@onready var label: RichTextLabel = %dialouge
+@export var dialouges : Array[ExtDialouge] 
 
 # TODO  diyalog sistemini daha iyi yap!!!!!
 func _init() -> void:
-	#connect("dialouge_ended",pr._on_dialougebox_dialouge_ended)
+	# connect("dialouge_ended",pr._on_dialougebox_dialouge_ended)
 	pass
 func dialuoge_system(event:InputEvent)->void:
 	for t in dialouges:
@@ -21,7 +21,7 @@ func dialuoge_system(event:InputEvent)->void:
 		if Input.is_action_just_pressed("interac"):
 			skip.emit()
 			dials += 1
-		
+	#for t in
 		await skip
 		continue
 		if dials >= dialouges.size():
