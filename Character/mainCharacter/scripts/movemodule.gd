@@ -29,6 +29,8 @@ func _ready() -> void:
 
 @export_group("Extras")
 @export var is_expremental:bool = false
+
+
 func _physics_process(delta: float) -> void:
 	if  is_basic == true:
 		basic_movement()
@@ -77,7 +79,8 @@ func basic_movement()->void:
 			Player.velocity.y += basic_gravity
 		else:
 			basic_gravity = 40.0
-func extra_movement()->void:
+func extra_movement()->void: 
+	#FIXME zıplama yok
 	var xdir:Vector2 = Vector2.ZERO
 	
 	if Input.is_action_just_pressed("space") and Player.PlayerHstates == Player.Mstates.YER:

@@ -8,13 +8,13 @@ signal skip
 signal dialouge_ended
 
 @onready var label: RichTextLabel = %dialouge
-@export var dialouges : Array[ExtDialouge] 
+@export var dialouges : Array[ExtDialouge] #FIXME 
 
 # TODO  diyalog sistemini daha iyi yap!!!!!
 func _init() -> void:
 	# connect("dialouge_ended",pr._on_dialougebox_dialouge_ended)
 	pass
-func dialuoge_system(event:InputEvent)->void:
+func dialuoge_system()->void:
 	for t in dialouges:
 		var dials:int = 0
 		label.text = t.dial_text
@@ -28,4 +28,4 @@ func dialuoge_system(event:InputEvent)->void:
 			break
 			dialouge_ended.emit()
 func _input(event: InputEvent) -> void:
-	dialuoge_system(event)
+	dialuoge_system()

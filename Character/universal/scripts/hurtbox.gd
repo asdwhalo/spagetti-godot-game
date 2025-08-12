@@ -1,6 +1,7 @@
 class_name hurtbox extends Area2D
 
 @onready var pr:entity= get_parent()
+
 var Hitbox = hitbox.new()
 var Hitbody = hitbody.new()
 func  _init()->void:

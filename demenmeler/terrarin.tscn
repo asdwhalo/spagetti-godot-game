@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dubf62e7l8yc8"]
+
+[ext_resource type="TileSet" uid="uid://c5curu8ohxx2a" path="res://levels/assets/tilemaps/beta01.tres" id="1_voo52"]
+
+[node name="terrarin" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_voo52")
+format = 2

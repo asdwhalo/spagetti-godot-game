@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dlk0jew6p7s5g"]
+[gd_scene load_steps=11 format=3 uid="uid://dlk0jew6p7s5g"]
 
 [ext_resource type="Script" uid="uid://bd5chtqpigk8m" path="res://Character/mainCharacter/scripts/PlayerClass.gd" id="1_u48tv"]
 [ext_resource type="PackedScene" uid="uid://bk0wlapbsfsxv" path="res://Character/mainCharacter/scenes/movemodule.tscn" id="2_32dps"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://i1cv5kdaa8a5" path="res://Character/universal/scenes/Hurtbox.tscn" id="3_32dps"]
 [ext_resource type="PackedScene" uid="uid://bsvh734nn6lku" path="res://huds/scenes/dialougebox.tscn" id="3_40f8a"]
 [ext_resource type="SpriteFrames" uid="uid://0h45pdp1ig0p" path="res://Character/mainCharacter/assets/maviadamnormal.tres" id="3_goo8w"]
+[ext_resource type="Script" uid="uid://p4noiq2akriy" path="res://huds/scripts/extendeddialres.gd" id="5_qpsop"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qpsop"]
 atlas = ExtResource("2_o1c56")
@@ -56,6 +57,7 @@ rotation_smoothing_enabled = true
 [node name="dialougebox" parent="Camera/hud" instance=ExtResource("3_40f8a")]
 unique_name_in_owner = true
 visible = false
+dialouges = Array[ExtResource("5_qpsop")]([])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
@@ -75,15 +77,15 @@ debug_color = Color(0.951568, 0.194754, 0.273678, 0.42)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(7, -4)
+position = Vector2(2, -4)
 rotation = -1.59811
 target_position = Vector2(0, 4)
 collide_with_areas = true
 
 [node name="RayCast2D2" type="RayCast2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-7, -4)
-rotation = 1.56598
+position = Vector2(-2, -4)
+rotation = 1.57079
 target_position = Vector2(0, 4)
 hit_from_inside = true
 collide_with_areas = true

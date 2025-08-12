@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://2g6a56oluvnr"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_oas55"]
+var/var/name = &"var"
+var/var/type = 3
+var/var/value = 0.0
+var/var/hint = 0
+var/var/hint_string = ""
+
+[node name="follower" type="CharacterBody2D"]
+
+[node name="LimboState" type="LimboState" parent="."]
+blackboard_plan = SubResource("BlackboardPlan_oas55")
+
+[node name="LimboState" type="LimboState" parent="LimboState"]
