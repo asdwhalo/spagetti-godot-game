@@ -1,4 +1,5 @@
-class_name enemraycast extends RayCast2D
+class_name enemraycast
+extends RayCast2D
 
 @onready var manager : Node = get_parent()
 
@@ -9,7 +10,7 @@ func tagreted()->void:
 		var collider = get_collider()
 		if collider is player:
 			igotyou.emit()
-func _ready() -> void:
+func _init() -> void:
 	collide_with_areas = false
 	collide_with_bodies = true
 	igotyou.connect(manager.find())
