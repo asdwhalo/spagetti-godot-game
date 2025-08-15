@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://chmh74ir1oxpw"]
+
+[ext_resource type="Texture2D" uid="uid://blxur4c7ef1mc" path="res://icon.svg" id="1_shj4q"]
+[ext_resource type="PackedScene" uid="uid://b0gp0vwpvhdlb" path="res://demenmeler/e.tscn" id="2_yrfdv"]
+
+[sub_resource type="GDScript" id="GDScript_yrfdv"]
+resource_name = "e"
+script/source = "extends Area2D
+
+func _input(event: InputEvent) -> void:
+		$Sprite2D.rotate(deg_to_rad(-event.relative.x + event.relative.y))
+func _physics_process(delta: float) -> void:
+	global_position = get_global_mouse_position()
+
+
+func _on_e_ise_yaradı() -> void:
+	print(\"alana girdim!\")
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shj4q"]
+size = Vector2(62, 62)
+
+[node name="Level" type="Node2D"]
+
+[node name="Area" type="Area2D" parent="."]
+script = SubResource("GDScript_yrfdv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_shj4q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+shape = SubResource("RectangleShape2D_shj4q")
+
+[node name="e" parent="." instance=ExtResource("2_yrfdv")]
+
+[connection signal="ise_yaradı" from="e" to="Area" method="_on_e_ise_yaradı"]

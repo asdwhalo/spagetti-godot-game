@@ -17,6 +17,10 @@ run/main_scene="uid://hhhfu4iwcw20"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://dhnnvfnu57bpx"
 
+[autoload]
+
+Sound="*res://sound.gd"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")

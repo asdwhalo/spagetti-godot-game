@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bsvh734nn6lku"]
 
 [ext_resource type="Theme" uid="uid://cgqqrmcjhl67k" path="res://misc/fonts/basic.tres" id="1_k61s4"]
-[ext_resource type="Script" uid="uid://l3wkwvgjl7cq" path="res://huds/scripts/dialouge.gd" id="2_xmox3"]
+[ext_resource type="Script" uid="uid://l3wkwvgjl7cq" path="res://huds/scripts/dialougebox.gd" id="2_xmox3"]
 [ext_resource type="Script" uid="uid://b357qo717ahqf" path="res://huds/scripts/dialougeres.gd" id="3_ajdpl"]
 [ext_resource type="Resource" uid="uid://dtvclgpa30jvb" path="res://huds/1nolu.tres" id="4_uemhf"]
 

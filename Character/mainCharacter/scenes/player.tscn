@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dlk0jew6p7s5g"]
+[gd_scene load_steps=14 format=3 uid="uid://dlk0jew6p7s5g"]
 
 [ext_resource type="Script" uid="uid://bd5chtqpigk8m" path="res://Character/mainCharacter/scripts/PlayerClass.gd" id="1_u48tv"]
 [ext_resource type="PackedScene" uid="uid://bk0wlapbsfsxv" path="res://Character/mainCharacter/scenes/movemodule.tscn" id="2_32dps"]
@@ -7,10 +7,22 @@
 [ext_resource type="PackedScene" uid="uid://bsvh734nn6lku" path="res://huds/scenes/dialougebox.tscn" id="3_40f8a"]
 [ext_resource type="SpriteFrames" uid="uid://0h45pdp1ig0p" path="res://Character/mainCharacter/assets/maviadamnormal.tres" id="3_goo8w"]
 [ext_resource type="Script" uid="uid://p4noiq2akriy" path="res://huds/scripts/extendeddialres.gd" id="5_qpsop"]
+[ext_resource type="Script" uid="uid://b357qo717ahqf" path="res://huds/scripts/dialougeres.gd" id="5_y736l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qpsop"]
 atlas = ExtResource("2_o1c56")
 region = Rect2(34.293, 0, 11.5866, 16)
+
+[sub_resource type="Resource" id="Resource_lbnqc"]
+script = ExtResource("5_y736l")
+dial_text = "31
+"
+metadata/_custom_type_script = "uid://b357qo717ahqf"
+
+[sub_resource type="Resource" id="Resource_qlmta"]
+script = ExtResource("5_qpsop")
+dial_array = Array[ExtResource("5_y736l")]([SubResource("Resource_lbnqc")])
+metadata/_custom_type_script = "uid://p4noiq2akriy"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_40f8a"]
 radius = 2.0
@@ -26,7 +38,6 @@ fizikbox = NodePath("fizikbox")
 metadata/_custom_type_script = "uid://bd5chtqpigk8m"
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-visible = false
 emitting = false
 amount = 10
 texture = SubResource("AtlasTexture_qpsop")
@@ -40,7 +51,7 @@ color = Color(0.631373, 0.901961, 0.85098, 0.564706)
 [node name="movemodule" parent="." instance=ExtResource("2_32dps")]
 is_basic = true
 basic_speed = 100
-basic_jump = 345
+basic_jump = 300.0
 basic_gravity = 20.0
 jump = 10.0
 speed = 70.0
@@ -57,7 +68,7 @@ rotation_smoothing_enabled = true
 [node name="dialougebox" parent="Camera/hud" instance=ExtResource("3_40f8a")]
 unique_name_in_owner = true
 visible = false
-dialouges = Array[ExtResource("5_qpsop")]([])
+dialouges = SubResource("Resource_qlmta")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true

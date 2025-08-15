@@ -11,7 +11,7 @@ extends Node
 @export_group("basic")
 @export var is_basic:bool = false
 @export var basic_speed:int 
-@export var basic_jump:int
+@export var basic_jump:float
 @export var basic_gravity:float = 9.8
 var parent = Player
 func _ready() -> void:
@@ -42,8 +42,8 @@ func _physics_process(delta: float) -> void:
 			var dashspeed = speed*2
 			Player.velocity.abs().x = dashspeed
 		
-		var cols = ray2.get_collider() and rayr.get_collider()
-		var colled:bool = rayr.is_colliding() and ray2.is_colliding()
+		#if rayr.is_colliding() and ray2.is_colliding() and Input.is_action_just_pressed("space") and Player.PlayerHstates == Player.Mstates.YER:
+		#	Player.velocity.y = basic_jump/2
 		var dirx = Input.get_axis("a","d")
 		Player.velocity.x = dirx * speed 
 		if Input.is_action_just_pressed("space")and Player.is_on_floor():
@@ -74,8 +74,9 @@ func basic_movement()->void:
 	if Input.is_action_just_pressed("space") and Player.PlayerHstates == Player.Mstates.YER:
 		Player.velocity.y -= basic_jump
 	if  not Player.PlayerHstates == Player.Mstates.YER:
-		var max_basic_gravity = 2 * basic_gravity
-		if not basic_gravity > max_basic_gravity:
+		var max_basic_gravity = 70
+		
+		if not basic_gravity >= max_basic_gravity:
 			Player.velocity.y += basic_gravity
 		else:
 			basic_gravity = 40.0
