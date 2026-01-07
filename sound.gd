@@ -1,2 +1,2 @@
-class_name Sound
+class_name sound
 extends AudioStreamPlayer

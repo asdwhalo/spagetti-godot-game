@@ -6,9 +6,10 @@ extends Panel
 signal skip
 signal dialouge_ended
 var dials = 0
+@onready var dialman:DialougeManager = get_parent() 
 @onready var label: RichTextLabel = %dialouge
 @export var dialouges : ExtDialouge #FIXME bunu dialog kaynağından almalıyız
-var dial :ExtDialouge = self.owner.get_dials()
+var dial :ExtDialouge = dialman.dialouges
 # TODO  diyalog sistemini daha iyi yap!!!!!
 func _init() -> void:
 	# connect("dialouge_ended",pr._on_dialougebox_dialouge_ended)

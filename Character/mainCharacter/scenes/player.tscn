@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dlk0jew6p7s5g"]
+[gd_scene load_steps=17 format=3 uid="uid://dlk0jew6p7s5g"]
 
 [ext_resource type="Script" uid="uid://bd5chtqpigk8m" path="res://Character/mainCharacter/scripts/PlayerClass.gd" id="1_u48tv"]
 [ext_resource type="PackedScene" uid="uid://bk0wlapbsfsxv" path="res://Character/mainCharacter/scenes/movemodule.tscn" id="2_32dps"]
@@ -8,10 +8,21 @@
 [ext_resource type="SpriteFrames" uid="uid://0h45pdp1ig0p" path="res://Character/mainCharacter/assets/maviadamnormal.tres" id="3_goo8w"]
 [ext_resource type="Script" uid="uid://p4noiq2akriy" path="res://huds/scripts/extendeddialres.gd" id="5_qpsop"]
 [ext_resource type="Script" uid="uid://b357qo717ahqf" path="res://huds/scripts/dialougeres.gd" id="5_y736l"]
+[ext_resource type="Script" uid="uid://cqsfkes8fhkhm" path="res://huds/scripts/dial_man.gd" id="9_lbnqc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qpsop"]
 atlas = ExtResource("2_o1c56")
 region = Rect2(34.293, 0, 11.5866, 16)
+
+[sub_resource type="Resource" id="Resource_4lpj5"]
+script = ExtResource("5_y736l")
+dial_text = "a"
+metadata/_custom_type_script = "uid://b357qo717ahqf"
+
+[sub_resource type="Resource" id="Resource_xyg6r"]
+script = ExtResource("5_qpsop")
+dial_array = Array[ExtResource("5_y736l")]([SubResource("Resource_4lpj5")])
+metadata/_custom_type_script = "uid://p4noiq2akriy"
 
 [sub_resource type="Resource" id="Resource_lbnqc"]
 script = ExtResource("5_y736l")
@@ -65,7 +76,12 @@ rotation_smoothing_enabled = true
 
 [node name="hud" type="CanvasLayer" parent="Camera"]
 
-[node name="dialougebox" parent="Camera/hud" instance=ExtResource("3_40f8a")]
+[node name="DialougeManager" type="Node" parent="Camera/hud"]
+script = ExtResource("9_lbnqc")
+dialouges = SubResource("Resource_xyg6r")
+metadata/_custom_type_script = "uid://cqsfkes8fhkhm"
+
+[node name="dialougebox" parent="Camera/hud/DialougeManager" instance=ExtResource("3_40f8a")]
 unique_name_in_owner = true
 visible = false
 dialouges = SubResource("Resource_qlmta")
@@ -107,4 +123,4 @@ position = Vector2(2, -2)
 [node name="Marker2" type="Marker2D" parent="."]
 position = Vector2(-2, -2)
 
-[connection signal="dialouge_ended" from="Camera/hud/dialougebox" to="." method="_on_dialougebox_dialouge_ended"]
+[connection signal="dialouge_ended" from="Camera/hud/DialougeManager/dialougebox" to="." method="_on_dialougebox_dialouge_ended"]

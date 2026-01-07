@@ -8,7 +8,7 @@ var par2:AtlasTexture = preload("res://Character/mainCharacter/assets/particelid
 @export var PlayerYstates:Ystates = Ystates.HAYATTA
 @onready var particles: CPUParticles2D = $CPUParticles2D
 
-@onready var dial: Dialouge_manager = %dialougebox
+@onready var dial: DialougeBox = %dialougebox
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var movemodule: Node = $movemodule
 

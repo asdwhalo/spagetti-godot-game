@@ -1,9 +1,9 @@
 class_name DialougeManager
 extends Node
 
-@export var dialouges:ExtDialouge:
-	get = get_dials
+@export var dialouges:ExtDialouge
 func get_dials():
-	pass
+	for  i in dialouges:
+		pass
 func started():
 	pass

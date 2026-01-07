@@ -14,7 +14,7 @@ config/name="bilmiyorum"
 config/description="bilmiyom işte mk"
 config/tags=PackedStringArray("2d", "current")
 run/main_scene="uid://hhhfu4iwcw20"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="uid://dhnnvfnu57bpx"
 
 [autoload]
