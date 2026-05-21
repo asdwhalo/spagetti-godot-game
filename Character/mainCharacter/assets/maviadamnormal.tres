@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://0h45pdp1ig0p"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://0h45pdp1ig0p"]
 
 [ext_resource type="Texture2D" uid="uid://ghiq30pwh51i" path="res://Character/mainCharacter/assets/maviadam-Sheet.png" id="1_6d6ua"]
 

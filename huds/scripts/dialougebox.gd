@@ -6,17 +6,17 @@ extends Panel
 signal skip
 signal dialouge_ended
 var dials = 0
-@onready var dialman:DialougeManager = get_parent() 
+@onready var dialman:DialougeManager = %DialougeManager 
 @onready var label: RichTextLabel = %dialouge
 @export var dialouges : ExtDialouge #FIXME bunu dialog kaynağından almalıyız
-var dial :ExtDialouge = dialman.dialouges
+@onready var dial :ExtDialouge = dialman.dialouges
 # TODO  diyalog sistemini daha iyi yap!!!!!
 func _init() -> void:
 	# connect("dialouge_ended",pr._on_dialougebox_dialouge_ended)
 	pass
 func dialuoge_system()->void:
 	for t in dialouges.dial_array:
-		var ran = randi() % t.size()
+		var ran = randi() % dialouges.dial_array.size()
 		label.text = t.dial_text
 		if Input.is_action_just_pressed("interac"):
 			skip.emit()
@@ -40,5 +40,5 @@ func built_in_dialouge_sys():
 		continue
 		if dials >= ran:
 			dialouge_ended.emit()
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	dialuoge_system()

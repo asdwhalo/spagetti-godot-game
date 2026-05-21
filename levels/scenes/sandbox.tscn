@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://hhhfu4iwcw20"]
+[gd_scene format=3 uid="uid://hhhfu4iwcw20"]
 
 [ext_resource type="PackedScene" uid="uid://bwsrfpyf46r65" path="res://levels/scenes/levelbase.tscn" id="1_7sv0y"]
 [ext_resource type="TileSet" uid="uid://cft0kf5shhlqq" path="res://levels/placeholdertileset.tres" id="2_57jkv"]
 [ext_resource type="PackedScene" uid="uid://dlk0jew6p7s5g" path="res://Character/mainCharacter/scenes/player.tscn" id="3_57jkv"]
 
-[node name="levelbase" instance=ExtResource("1_7sv0y")]
+[node name="levelbase" unique_id=716515398 instance=ExtResource("1_7sv0y")]
 
 [node name="TileMap" parent="." index="2"]
 tile_set = ExtResource("2_57jkv")
@@ -13,4 +13,4 @@ layer_0/tile_data = PackedInt32Array(196602, 0, 0, 262138, 0, 0, 327674, 0, 0, 3
 [node name="enter" parent="." index="4"]
 position = Vector2(634, -133)
 
-[node name="Player" parent="." index="7" instance=ExtResource("3_57jkv")]
+[node name="Player" parent="." index="7" unique_id=1122966336 instance=ExtResource("3_57jkv")]

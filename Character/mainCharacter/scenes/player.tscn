@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dlk0jew6p7s5g"]
+[gd_scene format=3 uid="uid://dlk0jew6p7s5g"]
 
 [ext_resource type="Script" uid="uid://bd5chtqpigk8m" path="res://Character/mainCharacter/scripts/PlayerClass.gd" id="1_u48tv"]
 [ext_resource type="PackedScene" uid="uid://bk0wlapbsfsxv" path="res://Character/mainCharacter/scenes/movemodule.tscn" id="2_32dps"]
@@ -42,13 +42,13 @@ height = 14.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1c56"]
 size = Vector2(4, 15)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("hurtbox_component", "fizikbox")]
+[node name="Player" type="CharacterBody2D" unique_id=2093894964 node_paths=PackedStringArray("hurtbox_component", "fizikbox")]
 script = ExtResource("1_u48tv")
 hurtbox_component = NodePath("Hurtbox")
 fizikbox = NodePath("fizikbox")
 metadata/_custom_type_script = "uid://bd5chtqpigk8m"
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=545174661]
 emitting = false
 amount = 10
 texture = SubResource("AtlasTexture_qpsop")
@@ -59,7 +59,7 @@ randomness = 0.13
 gravity = Vector2(0, 0)
 color = Color(0.631373, 0.901961, 0.85098, 0.564706)
 
-[node name="movemodule" parent="." instance=ExtResource("2_32dps")]
+[node name="movemodule" parent="." unique_id=1331536212 instance=ExtResource("2_32dps")]
 is_basic = true
 basic_speed = 100
 basic_jump = 300.0
@@ -69,47 +69,48 @@ speed = 70.0
 jump_time_to_peak = 0.5
 jump_destence = 30.0
 
-[node name="Camera" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="." unique_id=667334180]
 scale = Vector2(0.886402, 0.225)
 zoom = Vector2(4, 4)
 rotation_smoothing_enabled = true
 
-[node name="hud" type="CanvasLayer" parent="Camera"]
+[node name="hud" type="CanvasLayer" parent="Camera" unique_id=1486120516]
 
-[node name="DialougeManager" type="Node" parent="Camera/hud"]
+[node name="DialougeManager" type="Node" parent="Camera/hud" unique_id=1222104207]
+unique_name_in_owner = true
 script = ExtResource("9_lbnqc")
 dialouges = SubResource("Resource_xyg6r")
 metadata/_custom_type_script = "uid://cqsfkes8fhkhm"
 
-[node name="dialougebox" parent="Camera/hud/DialougeManager" instance=ExtResource("3_40f8a")]
+[node name="dialougebox" parent="Camera/hud/DialougeManager" unique_id=167364853 instance=ExtResource("3_40f8a")]
 unique_name_in_owner = true
 visible = false
 dialouges = SubResource("Resource_qlmta")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1390925090]
 unique_name_in_owner = true
 sprite_frames = ExtResource("3_goo8w")
 animation = &"idle"
 
-[node name="fizikbox" type="CollisionShape2D" parent="."]
+[node name="fizikbox" type="CollisionShape2D" parent="." unique_id=1064082568]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_40f8a")
 
-[node name="Hurtbox" parent="." instance=ExtResource("3_32dps")]
+[node name="Hurtbox" parent="." unique_id=239939642 instance=ExtResource("3_32dps")]
 
-[node name="Collisionbox" type="CollisionShape2D" parent="Hurtbox"]
+[node name="Collisionbox" type="CollisionShape2D" parent="Hurtbox" unique_id=2000593175]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_o1c56")
 debug_color = Color(0.951568, 0.194754, 0.273678, 0.42)
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1526745648]
 unique_name_in_owner = true
 position = Vector2(2, -4)
 rotation = -1.59811
 target_position = Vector2(0, 4)
 collide_with_areas = true
 
-[node name="RayCast2D2" type="RayCast2D" parent="."]
+[node name="RayCast2D2" type="RayCast2D" parent="." unique_id=58469777]
 unique_name_in_owner = true
 position = Vector2(-2, -4)
 rotation = 1.57079
@@ -117,10 +118,10 @@ target_position = Vector2(0, 4)
 hit_from_inside = true
 collide_with_areas = true
 
-[node name="Marker" type="Marker2D" parent="."]
+[node name="Marker" type="Marker2D" parent="." unique_id=267291020]
 position = Vector2(2, -2)
 
-[node name="Marker2" type="Marker2D" parent="."]
+[node name="Marker2" type="Marker2D" parent="." unique_id=1036376630]
 position = Vector2(-2, -2)
 
 [connection signal="dialouge_ended" from="Camera/hud/DialougeManager/dialougebox" to="." method="_on_dialougebox_dialouge_ended"]
