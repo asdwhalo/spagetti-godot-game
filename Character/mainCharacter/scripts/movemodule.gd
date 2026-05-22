@@ -8,14 +8,21 @@ extends Node
 @onready var ray2: RayCast2D = %RayCast2D2
 @onready var anim: AnimatedSprite2D = %AnimatedSprite2D
 
+@export var current_state:state = state.Air
+
 @export_group("basic")
 @export var is_basic:bool = false
 @export var basic_speed:int 
 @export var basic_jump:float
 @export var basic_gravity:float = 9.8
-var parent = Player
-func _ready() -> void:
-	pass
+@onready var parent = Player
+var current_speed:float
+enum state{
+	Ground,
+	Air,
+	Dash,
+	Wall
+}
 @onready var jump_heigth = calculater(jump,jump_time_to_peak)
 @onready var up_grav = gravity_calculater(jump,jump_time_to_peak)
 @onready var dis_speed = cal_jump_dis(100,jump_time_to_peak,jump_destence)
@@ -30,17 +37,46 @@ func _ready() -> void:
 @export_group("Extras")
 @export var is_expremental:bool = false
 
-
+func state_control() -> void:
+	
+	if parent.is_on_floor() and not parent.is_on_wall():
+		change_state(state.Ground)
+	elif parent.is_on_wall_only():
+		change_state(state.Wall)
+	else:
+		change_state(state.Air)
+func change_state(new_state:state) ->void:
+	var old_state := current_state
+	current_state = new_state
+	match old_state:
+		state.Ground:
+			pass
+		state.Air:
+			pass
+		state.Dash:
+			pass
+		state.Wall:
+			pass
+	match new_state:
+		state.Ground:
+			current_speed = basic_speed
+		state.Air:
+			pass
+		state.Dash:
+			pass
+		state.Wall:
+			pass
 func _physics_process(delta: float) -> void:
+	state_control()
 	if  is_basic == true:
 		basic_movement()
 	elif is_expremental == true:
 		extra_movement()
 	else:
 		anim.self_modulate = Color.CRIMSON
-		if Player.PlayerHstates == Player.Mstates.DASH:
-			var dashspeed = speed*2
-			Player.velocity.abs().x = dashspeed
+	if Player.PlayerHstates == Player.Mstates.DASH:
+		var dashspeed = speed * 2
+		current_speed = dashspeed
 		
 		#if rayr.is_colliding() and ray2.is_colliding() and Input.is_action_just_pressed("space") and Player.PlayerHstates == Player.Mstates.YER:
 		#	Player.velocity.y = basic_jump/2
@@ -70,10 +106,10 @@ func cal_jump_dis(distance:float,to_peak:float,to_desenc:float)->float:
 func basic_movement()->void:
 	
 	var dir := Input.get_axis("a","d")
-	Player.velocity.x = dir * basic_speed
-	if Input.is_action_just_pressed("space") and Player.PlayerHstates == Player.Mstates.YER:
+	Player.velocity.x = dir * current_speed
+	if Input.is_action_just_pressed("space") and current_state == state.Ground:
 		Player.velocity.y -= basic_jump
-	if  not Player.PlayerHstates == Player.Mstates.YER:
+	else:
 		var max_basic_gravity = 70
 		
 		if not basic_gravity >= max_basic_gravity:
